@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel=”icon” href=”{%FAVICON%}” type=”image/any-icon”>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/stats.css" />
+    <link rel="stylesheet" href="./css/gui.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Port+Lligat+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+
+    <!-- ROUGH DRAFT -->
+    <title>Demigora</title>
+  </head>
+  <body>
+    <div class="box">
+      <div id="container"></div>
+      <div class="info">
+        <div class="specs_container" onclick="hideDiv(this.className);">
+          <div class="name"><h3 class="main name">Demigora #1</h3></div>
+
+          <p
+            class="specs class"
+            title="The classification of the specimen, classes may cause 8% damage to their lower class member this is know as cast effect"
+          >
+            CLASS: undead
+          </p>
+          <p class="specs purg" title="The rarity of the specimen">
+            PURG_LEVEL: Supermighty
+          </p>
+          <p
+            class="specs form"
+            title="The ammount of variations a specimen carries"
+          >
+            Form: 1 of 1
+          </p>
+          <p class="specs description">
+            Puny purgator you have little comprehention of my stregth, take me
+            to the battle!.
+          </p>
+        </div>
+
+        <div class="battle_container" onclick="hideDiv(this.className);">
+          <div class="name"><h3 class="main name">BATTLE STATS</h3></div>
+
+          <p class="battle health">Health: 8132</p>
+          <p class="battle damage">Damage: 476</p>
+          <p class="battle defence">Defense: 598</p>
+          <p
+            class="battle time"
+            title="time it takes for specimen to preform another strike"
+          >
+            Time: 5
+          </p>
+
+          <p
+            class="battle stun"
+            title="blocks opponent from striking for 1 cycle. note: all chances are out of 4000"
+          >
+            Stun: 289
+          </p>
+          <p
+            class="battle agility"
+            title="chance of avoiding an enemies strike. note: all chances are out of 4000"
+          >
+            Agility: 729
+          </p>
+          <p
+            class="battle power"
+            title="chance of landing a critical hit of 10%. note: all chances are out of 4000"
+          >
+            Power: 416
+          </p>
+        </div>
+
+        <div
+          class="powers"
+          onclick="hideDiv(this.className);"
+          title="alter & strike abilties take effect the moment a specimen enters the battle, however strikes takes effect every time cycle"
+        >
+          <div class="name"><h3 class="main name">ABILITIES</h3></div>
+
+          <div id="special">
+            <div
+              class="ability"
+              title="strike abilities take place every atk time also known as a cycle"
+            >
+              Name: Glory Flash <br />
+              trait: samurai <br />
+              <div>
+                <p>def:</p>
+                <p style="color: greenyellow">1.19</p>
+                <p>pow:</p>
+                <p style="color: red">0.87</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controlz" id="ctrl1">
+        <div class="black-container" style="opacity: 0.5">
+          <div
+            class="name"
+            style="justify-content: center"
+            onclick="toggleControls()"
+          >
+            <h3 class="ctrlNm">Controls [x]</h3>
+          </div>
+
+          <div class="button-wrapper">
+            <!-- add Buttons with Javascript -->
+          </div>
+
+          <div class="checkbox-container">
+            <label for="checkbox" style="color: #fff">Loop animation</label>
+            <input type="checkbox" id="checkbox" />
+
+            <label for="checkbox2" style="color: #fff">Show Skeleton</label>
+            <input type="checkbox" id="checkbox2" />
+          </div>
+          <br />
+
+          <div class="slider-container">
+            <p>Ability Speed</p>
+            <input
+              i
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              class="slider"
+              id="myRange"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORT MAP -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- EDIT DOM -->
+    <script>
+
+      //info div
+      function hideDiv(className = "") {
+        const div = document.getElementsByClassName(className)[0];
+
+        for (let i = 1; i < div.children.length; i++) {
+          const child = div.children[i];
+
+          if (child.style.display == "flex") {
+            child.style.display = "none";
+          } else {
+            child.style.display = "flex";
+          }
+        }
+      }
+
+      //controls div
+      const slider = document.getElementById("myRange");
+      const controlPanel = document.getElementById("ctrl1");
+      const checkbox = document.getElementById("checkbox"); //loop anim
+      const checkbox2 = document.getElementById("checkbox2"); //show skeleton
+
+      var buttons = [];
+      var loopAnim = { status: false, anim: null };
+      var onAbility = function () {
+        console.log("does nothing yet");
+      };
+      var modifyTimeScale = function () {
+        console.log("does nothing yet");
+      };
+
+      function toggleControls() {
+        const allDivs = document.querySelectorAll(".black-container div");
+        allDivs.forEach((div) => {
+          if (div.className !== "name") {
+            if (div.style.display == "none") {
+              div.style.display = "block";
+            } else div.style.display = "none";
+          }
+        });
+      }
+
+      function selected(elem) {
+        const AbilityName = String(elem.innerText);
+
+        //do something with abilty name
+        console.log("action activated: " + AbilityName);
+        onAbility(AbilityName, loopAnim.status);
+      }
+
+      function dSelOthers(className = "") {
+        buttons = document.querySelectorAll(".button-wrapper button");
+        var buttonIndex = className.slice(className.indexOf("-") + 1);
+        buttonIndex = Number(buttonIndex);
+        buttonIndex = buttonIndex - 1;
+
+        if (loopAnim.status) {
+          buttons.forEach((el, index) => {
+            if (buttonIndex != index) {
+              el.style.backgroundColor = "inherit";
+            } else {
+              el.style.backgroundColor = "#69ffffdb";
+              selected(el);
+            }
+          });
+        } else selected(buttons[buttonIndex]);
+      }
+
+      function addButton(actionName = "") {
+        buttons = document.querySelectorAll(".button-wrapper button");
+        var buttonNumber = buttons.length + 1;
+        var btnClassName = `btn btn-${buttonNumber}`;
+
+        var newButton = document.createElement("button");
+        newButton.className = btnClassName;
+        newButton.innerText = String(actionName);
+        newButton.onclick = function () {
+          dSelOthers(this.className);
+        };
+        document.querySelector(".button-wrapper").appendChild(newButton);
+      }
+
+      function sliderOnchange(e) {
+        // Do something here when value of slider changes
+        const numb = e.target.value;
+        console.log(numb);
+        modifyTimeScale((numb * 1.8) / 100);
+      }
+
+      slider.onchange = sliderOnchange;
+    </script>
+
+    <!-- THREE JS -->
+    <script type="module">
+      import * as THREE from "three";
+      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      let scene, renderer, camera, stats;
+      let model, terrain, skeleton, mixer, clock;
+      let numAnimations, animations;
+
+      let abilityTime =
+        document.getElementsByClassName("battle time")[0].innerText;
+      abilityTime = abilityTime.slice(abilityTime.indexOf(":") + 2);
+      abilityTime = Number(abilityTime) || 3;
+
+      const specimenInfo = {
+        //link to your 3D model file
+        prefab: "https://amber-capitalist-muskox-654.mypinata.cloud/ipfs/QmY4NdEG1b7s4srHtsvYAyofkJ4Jnm6DpoQoYUtiunRC4J", //"../testgo7.glb", //"https://gateway.pinata.cloud/ipfs/QmSC2c7FpGVnA9QRz8J96r8qx4DXBjK9FunCnn3pMKyEef", //QmUuTPRK4xCjDvqmvJrZ6EBTvonaTcJYSCxmPTvTh8g2XS",
+        map: "%",
+        //puny //humanoid //large //boss //titan
+        size: "humanoid",
+        cycleTime: "humanoid",
+      };
+
+      const allActions = [];
+      const allAbilityNames = [];
+      const baseActions = {
+        idle: { weight: 1 },
+        faint: { weight: 1 },
+      };
+
+      init();
+      function init() {
+        const container = document.getElementById("container");
+        clock = new THREE.Clock();
+
+        //scene
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xa0a0a0);
+        scene.fog = new THREE.Fog(0xa0a0a0, 20, 90);
+
+        //Lighting
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x8d8d8d);
+        hemiLight.position.set(0, 20, 0);
+        scene.add(hemiLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(3, 10, 10);
+        dirLight.castShadow = true;
+        dirLight.shadow.camera.top = 2;
+        dirLight.shadow.camera.bottom = -2;
+        dirLight.shadow.camera.left = -2;
+        dirLight.shadow.camera.right = 2;
+        dirLight.shadow.camera.near = 0.1;
+        dirLight.shadow.camera.far = 40;
+        scene.add(dirLight);
+
+        //Load Terrain
+        const loader = new GLTFLoader();
+        const _map = specimenInfo.map;
+
+        if (_map.includes("%") || _map.length < 8 || !_map) {
+          const mesh = new THREE.Mesh(
+            new THREE.PlaneGeometry(100, 100),
+            new THREE.MeshPhongMaterial({ color: 0xcbcbcb, depthWrite: false })
+          );
+          mesh.rotation.x = -Math.PI / 2;
+          mesh.receiveShadow = true;
+          scene.add(mesh);
+          console.log("no map detected");
+        } else {
+          loader.load(_map, function (gltf) {
+            terrain = gltf.scene;
+            terrain.scale.set(100, 100, 100);
+            terrain.receiveShadow = true;
+            scene.add(terrain);
+          });
+        }
+
+        //Load Model
+        loader.load(specimenInfo.prefab, function (gltf) {
+          model = gltf.scene;
+          scene.add(model);
+
+          model.traverse(function (object) {
+            if (object.isMesh) object.castShadow = true;
+          });
+
+          skeleton = new THREE.SkeletonHelper(model);
+          skeleton.visible = checkbox2.checked;
+          scene.add(skeleton);
+
+          animations = gltf.animations;
+          mixer = new THREE.AnimationMixer(model);
+
+          // adding the animations to baseActions
+          numAnimations = animations.length;
+          for (let i = 0; i !== numAnimations; ++i) {
+            let clip = animations[i];
+            const name = clip.name;
+
+            if (!baseActions[name]) allAbilityNames.push(name);
+
+            const action = mixer.clipAction(clip);
+            baseActions[name] = { weight: 1 };
+            baseActions[name].action = action;
+            allActions.push(action);
+          }
+
+          onAbility = pairAnim;
+
+          createGui();
+
+          animate();
+        });
+
+        //Render
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
+
+        //Camera
+        const aspect = window.innerWidth / window.innerHeight;
+        camera = new THREE.PerspectiveCamera( 45, aspect, 1, 100 );
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enablePan = true;
+        controls.enableZoom = true;
+        controls.target.set(0, 1, 0);
+        controls.update();
+
+        //set specimen size
+        const onSize = (_size = "") => {
+          const setSize = (x, y, z, c) => {
+            camera.position.set(x, y, z); //puny: (0) //human: (2,6,10)  //large: (4,10,15) //boss: (6, 4, 25) //titan: (20,5,35)
+            controls.target.set(0, c, 0); //puny: (0) //human: (2) //large: (5) //boss: (10) // titan: (16)
+          };
+
+          if (_size == "titan") {
+            setSize(20, 5, 35, 16);
+          } else if (_size == "boss") {
+            setSize(6, 4, 25, 10);
+          } else if (_size == "large") {
+            setSize(4, 10, 15, 5);
+          } else if (_size == "humanoid") {
+            setSize(2, 6, 10, 2);
+          } else {
+            setSize(2, 2, 6, 0);
+          }
+        };
+
+        onSize(specimenInfo.size);
+        controls.update();
+
+        //Ground to camera
+        function _onCameraChange() {
+          const centerPosition = controls.target.clone();
+          centerPosition.y = 0;
+          const groundPosition = camera.position.clone();
+          groundPosition.y = 0;
+          const d = centerPosition.distanceTo(groundPosition);
+
+          const origin = new THREE.Vector2(controls.target.y, 0);
+          const remote = new THREE.Vector2(0, d);
+          const angleRadians = Math.atan2(
+            remote.y - origin.y,
+            remote.x - origin.x
+          );
+          controls.maxPolarAngle = angleRadians;
+        }
+
+        controls.addEventListener("change", _onCameraChange.bind(this));
+        controls.addEventListener("change", _onCameraChange.bind(this));
+
+        //window resize
+        window.onResize = function () {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+      }
+
+      /** create button for every ability that doesnt contain _p||_proj
+       *
+       * --------------------------------------------
+       * here is the only place where we will customise the baseNames and add them to button */
+      function createGui() {
+        const baseNames = ["None", ...Object.keys(baseActions)];
+        const cleanBaseNames = cleanNames(baseNames).clean;
+
+        cleanBaseNames.forEach((actionName, index) => {
+          var Name = actionName;
+          addButton(Name);
+        });
+      }
+
+      /** returns two arrays with one with raw array, the other with the cleaned version */
+      function cleanNames(namesArray = []) {
+        const raw = namesArray;
+        const clean = raw.map((el, index) => {
+          const name = String(el);
+          if (el.includes("_")) return name.slice(0, name.indexOf("_"));
+          return name;
+        });
+
+        //pairs
+        const pairs = {};
+
+        for (let i = 0; i < clean.length; i++) {
+          const query = clean[i];
+          pairs[query] = raw.filter((el) => {
+            return el.includes(query);
+          });
+        }
+
+        // console.log({ raw, clean, pairs })
+        return { raw, clean, pairs };
+      }
+
+      function stopAll() {
+        mixer.stopAllAction();
+        clearInterval(loopAnim.anim);
+      }
+
+      // Play a specific animation.
+      function playAction(actionName) {
+        try {
+          stopAll();
+
+          if (String(actionName).toLowerCase() == "none") {
+            console.log("animations stopped");
+          } else if (loopAnim.status) {
+            console.log("using anim loop");
+            const clip = THREE.AnimationClip.findByName(animations, actionName);
+            const action = mixer.clipAction(clip);
+            playActionLoop(action, actionName);
+          } else {
+            const clip = THREE.AnimationClip.findByName(animations, actionName);
+            const action = mixer.clipAction(clip);
+            action.setLoop(THREE.LoopOnce, 1);
+            action.reset();
+            action.play();
+          }
+        } catch (error) {
+          console.log(`action "${actionName}" cannot be played`, error);
+        }
+      }
+
+      function playActionLoop(action, actionName) {
+        stopAll();
+
+        if (allAbilityNames.includes(actionName)) {
+          console.log("using ability as if battle");
+
+          action.setLoop(THREE.LoopOnce);
+          action.reset();
+          action.play();
+
+          loopAnim.anim = setInterval(() => {
+            action.setLoop(THREE.LoopOnce);
+            action.reset();
+            action.play();
+            console.log("Ability Time: " + abilityTime);
+          }, abilityTime * 1000);
+        } else {
+          action.setLoop(THREE.LoopRepeat);
+          action.play();
+        }
+      }
+
+      /** This function is used to pair an animation + projectile if any. It finds 
+        anim with matching abilityName_ then plays both if they pair. */
+      function pairAnim(actionName) {
+        stopAll();
+
+        //see if it has pairs
+        const baseNames = ["None", ...Object.keys(baseActions)];
+        const { pairs } = cleanNames(baseNames);
+        const pairAnimNames = pairs[actionName];
+        const fullName = pairAnimNames[0];
+
+        //if no pair, play animation normally
+        if (pairAnimNames.length <= 1 || !pairAnimNames)
+          return playAction(fullName);
+        console.log("used pair");
+
+        // if has pair, play anim and its pair
+        const clips = [];
+        pairAnimNames.forEach((name, indx) => {
+          const c = THREE.AnimationClip.findByName(animations, name);
+          clips.push(c);
+        });
+
+        const playMixedAbility = () => {
+          const millisecs = fullName.slice(fullName.indexOf("-") + 1) || 500;
+
+          const _action = mixer.clipAction(clips[0]);
+          const _action2 = mixer.clipAction(clips[1]);
+          _action.setLoop(THREE.LoopOnce, 1);
+          _action2.setLoop(THREE.LoopOnce, 1);
+          _action.play();
+
+          setTimeout(() => {
+            _action2.play();
+          }, millisecs);
+        };
+
+        // if loop anims are on
+        if (loopAnim.status) {
+          loopAnim.anim = setInterval(function () {
+            pairAnimNames.forEach((name, indx) => {
+              const _action = mixer.clipAction(clips[indx]);
+              _action.setLoop(THREE.LoopOnce, 1);
+              _action.reset();
+              _action.play();
+            });
+          }, abilityTime * 1000);
+        } else {
+          pairAnimNames.forEach((name, indx) => {
+            const _action = mixer.clipAction(clips[indx]);
+            _action.setLoop(THREE.LoopOnce, 1);
+            _action.reset();
+            _action.play();
+          });
+        }
+      }
+
+      modifyTimeScale = function (speed) {
+        mixer.timeScale = speed;
+      };
+
+      function setSkeleton(on) {
+        if (on) {
+          skeleton.visible = true;
+          scene.add(skeleton);
+        } else {
+          scene.remove(skeleton);
+        }
+      }
+
+      checkbox.addEventListener("change", function () {
+        loopAnim.status = this.checked;
+
+        if (loopAnim.anim) {
+          clearInterval(loopAnim.anim);
+          console.log("ending loop");
+        }
+      });
+
+      checkbox2.addEventListener("change", function () {
+        //Do something when the checkbox is checked
+        setSkeleton(this.checked);
+      });
+
+      //runs the scene
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+
+        // Update the animation mixer, the stats panel, and render this frame
+        const mixerUpdateDelta = clock.getDelta();
+        mixer.update(mixerUpdateDelta);
+      }
+    </script>
+  </body>
+</html>
