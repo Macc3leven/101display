@@ -1,0 +1,234 @@
+body {
+    margin: 0;
+    font-family: "Roboto Mono", sans-serif;
+    overflow-x: hidden;
+    color: white;
+    background-color: rgb(30, 30, 30);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Righteous", sans-serif;
+    font-weight: 100;
+    margin: 0px;
+}
+
+p {
+    margin: 0px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page */
+.content {
+    position: relative;
+    transition: margin-left 0.5s;
+    padding: 0;
+    display: inline;
+    color: rgba(0, 0, 0, 0.50);
+}
+
+#loader{
+    position: absolute;
+    margin: 0 auto;
+    z-index: 3;
+    left: 50%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    background-color: #111111c6;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: 0.5s;
+    bottom: 0;
+}
+
+.close-btn {
+    position: absolute; /* Fixed position relative to the viewport */
+    z-index: 2;
+    padding: 10px;
+    cursor: pointer;
+    color: aquamarine;
+    z-index: 2;
+    text-decoration: none;
+    font-size: xx-large;
+    transition: color 0.3s, margin-left 0.5s, margin-bottom 0.5s; /* Transition for color and right position */
+}
+
+/* Content Styles */
+.sidebar > div {
+    width: 92%; /* Set the width to fit the container */
+    padding: 10px; /* Optional padding */
+    margin: 0 auto;
+    box-sizing: border-box; /* Makes sure padding doesn't affect width */
+    text-align: center; /* Align text to the center for each div */
+    font-weight: 500;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #aeaeae;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* Title */
+.title-section {
+    display: flex;
+    max-width: 100%;
+    overflow-x: hidden; /* Hide the overflow */
+    font-size: clamp(12px, 2vw, 32px);
+    position: relative; /* Needed for absolute positioning of the child */
+}
+
+.title-section > img {
+    max-width: 100px;
+    border-radius: 60px;
+}
+
+.title-info {
+    position: relative; /* Needed for absolute positioning of the child */
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap; /* Prevent text from wrapping to a new line */
+    padding: 10px;
+}
+
+.title-details {
+    display: flex; /* Enables flexbox layout */
+    flex-direction: row;
+    align-items: center; /* Align items vertically in the center */
+    gap: 10px; /* Optional: Adds some space between the flex items */
+    
+    gap: 20px;
+    white-space: nowrap;
+}
+
+
+/* Attributes and stats */
+.info_sections {
+    padding: 24px 0px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.info_title {
+    text-align: start;
+    padding-left: 10px;
+}
+
+.info_content {
+    text-align: start;
+    padding: 20px 10px 0px 10px;
+    gap: 20px;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.attrib,
+.stat {
+    font-weight: 100;
+    gap: 5px;
+}
+
+/* Abilities */
+.abil {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.abil:hover {
+    background-color: rgba(0, 0, 0, 0.99);
+}
+
+.abil > div {
+    padding: 10px 0px;
+}
+
+.abil_detail {
+    border-radius: 2px;
+    padding: 5px 10px;
+    margin: 2px;
+    gap: 4px;
+    font-size: smaller;
+    background-color: #f1f1f120;
+}
+
+.abil_detail > img {
+    width: 16px;
+}
+
+/* Social Section */
+.social-section {
+    padding: 40px;
+    max-width: 100%;
+}
+
+.social-content {
+    max-width: 100%;
+    justify-content: space-around;
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+}
+
+.social-content > a {
+    padding: 0;
+}
+
+@media screen and (min-width: 601px) {
+    /* Your CSS rules go here */
+    .close-btn {
+        position: absolute; /* Fixed position relative to the viewport */
+        top: 0;
+        left: 0;
+    }
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width: 600px) {
+    .sidebar {
+        height: 0;
+        width: 100%;
+    }
+
+    .close-btn {
+        bottom: 0;
+        right: 0; /* Initially placed at the right edge of the screen */
+    }
+
+    .content {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .social-content > a > img {
+        width: 30px;
+    }
+}
