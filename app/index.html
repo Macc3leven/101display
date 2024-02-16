@@ -1,616 +1,634 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel=”icon” href=”{%FAVICON%}” type=”image/any-icon”>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/stats.css" />
-    <link rel="stylesheet" href="./css/gui.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Port+Lligat+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="./css/specimen.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <title>Specimen #000</title>
 
-    <!-- ROUGH DRAFT -->
-    <title>Demigora</title>
-  </head>
-  <body>
-    <div class="box">
-      <div id="container"></div>
-      <div class="info">
-        <div class="specs_container" onclick="hideDiv(this.className);">
-          <div class="name"><h3 class="main name">Demigora #1</h3></div>
+    <body>
+        <!-- Sidebar -->
+        <!-- This sidebar opens from the side if desktop is greater that 600px width, and opens from the bottom on devices less that 600px width, the X is supposed to stay 
+          beside the sidebar at all times, and on mobile stay above it, -->
 
-          <p
-            class="specs class"
-            title="The classification of the specimen, classes may cause 8% damage to their lower class member this is know as cast effect"
-          >
-            CLASS: undead
-          </p>
-          <p class="specs purg" title="The rarity of the specimen">
-            PURG_LEVEL: Supermighty
-          </p>
-          <p
-            class="specs form"
-            title="The ammount of variations a specimen carries"
-          >
-            Form: 1 of 1
-          </p>
-          <p class="specs description">
-            Puny purgator you have little comprehention of my stregth, take me
-            to the battle!.
-          </p>
-        </div>
-
-        <div class="battle_container" onclick="hideDiv(this.className);">
-          <div class="name"><h3 class="main name">BATTLE STATS</h3></div>
-
-          <p class="battle health">Health: 8132</p>
-          <p class="battle damage">Damage: 476</p>
-          <p class="battle defence">Defense: 598</p>
-          <p
-            class="battle time"
-            title="time it takes for specimen to preform another strike"
-          >
-            Time: 5
-          </p>
-
-          <p
-            class="battle stun"
-            title="blocks opponent from striking for 1 cycle. note: all chances are out of 4000"
-          >
-            Stun: 289
-          </p>
-          <p
-            class="battle agility"
-            title="chance of avoiding an enemies strike. note: all chances are out of 4000"
-          >
-            Agility: 729
-          </p>
-          <p
-            class="battle power"
-            title="chance of landing a critical hit of 10%. note: all chances are out of 4000"
-          >
-            Power: 416
-          </p>
-        </div>
-
-        <div
-          class="powers"
-          onclick="hideDiv(this.className);"
-          title="alter & strike abilties take effect the moment a specimen enters the battle, however strikes takes effect every time cycle"
+        <a
+            id="toggleBarBtn"
+            href="javascript:void(0)"
+            class="close-btn"
+            onclick="toggleSidebar()"
+            >X</a
         >
-          <div class="name"><h3 class="main name">ABILITIES</h3></div>
 
-          <div id="special">
-            <div
-              class="ability"
-              title="strike abilities take place every atk time also known as a cycle"
-            >
-              Name: Glory Flash <br />
-              trait: samurai <br />
-              <div>
-                <p>def:</p>
-                <p style="color: greenyellow">1.19</p>
-                <p>pow:</p>
-                <p style="color: red">0.87</p>
-              </div>
+        <!-- Page Content -->
+        <div class="content" id="main-content">
+            <div id="loader"><img src="./images/loader.gif" alt=""></div>
+            <!-- <h2>Responsive Sidebar Example</h2>
+            <p>
+                Click on the icon to open or close the sidebar. Resize the
+                browser window to see the responsiveness.
+            </p>
+            <span
+                style="font-size: 30px; cursor: pointer"
+                onclick="toggleSidebar()"
+                >☰ Open Sidebar</span
+            > -->
+            <!-- Add your content here -->
+        </div>
+
+        <div class="sidebar" id="mySidebar">
+            <div class="title-section">
+                <img src="./images/domigra.png" alt="" />
+                <div class="title-info">
+                    <div class="title-details row">
+                        <h1>Domigra</h1>
+                    </div>
+
+                    <div class="title-details">
+                        <h4 id="formTxt">Form: 1 of 1</h4>
+                        <h4 id="Owner">SID: #101</h4>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <br />
+            <div class="info_sections">
+                <div class="info_title" style="text-align: center">
+                    Description
+                </div>
+                <div class="info_content" style="text-align: center">
+                    <p id="description">
+                        Puny purgator you have little comprehention of my
+                        stregth, take me to the battle!
+                    </p>
+                </div>
+            </div>
+            <!-- Switch form Go here -->
+            <br />
+            <div class="info_sections">
+                <div class="info_title">Attributes</div>
+                <div class="info_content wrap">
+                    <div class="attrib row">
+                        <h3>Class</h3>
+                        <p id="classTxt">Undead</p>
+                    </div>
+                    <div class="attrib row">
+                        <h3>Skill</h3>
+                        <p id="skillTxt">Samurai</p>
+                    </div>
+                    <div class="attrib row">
+                        <h3>Build</h3>
+                        <p id="buildTxt">Base</p>
+                    </div>
+                    <div class="attrib row">
+                        <h3>Purg Lvl</h3>
+                        <p id="purgTxt">Supermighty</p>
+                    </div>
+                    <div class="attrib row">
+                        <h3>Family</h3>
+                        <p id="familyTxt">Devine</p>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="info_sections">
+                <div class="info_title">Stats</div>
+                <div class="info_content wrap">
+                    <div class="stat row">
+                        <h3>ATK</h3>
+                        <p id="atkTxt">100</p>
+                    </div>
+                    <div class="stat row">
+                        <h3>DEF</h3>
+                        <p id="defTxt">100</p>
+                    </div>
+                    <div class="stat row">
+                        <h3>CYCLE TIME</h3>
+                        <p id="timeTxt">100</p>
+                    </div>
+                    <div class="stat row">
+                        <h3>STUN</h3>
+                        <p id="stunTxt">100</p>
+                    </div>
+                    <div class="stat row">
+                        <h3>AGILITY</h3>
+                        <p id="agilityTxt">100</p>
+                    </div>
+                    <div class="stat row">
+                        <h3>POWER</h3>
+                        <p id="powerTxt">100</p>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="info_sections">
+                <div class="info_title">Abilities</div>
+                <div class="info_content wrap">
+                    <div class="abil col">
+                        <h2>RUN</h2>
+                    </div>
+
+                    <div class="abil col">
+                        <h2>JUMP</h2>
+                    </div>
+
+                    <div class="abil col">
+                        <h2>IDLE</h2>
+                    </div>
+
+                    <div class="abil col">
+                        <h2>Death Blade</h2>
+                        <div class="row wrap">
+                            <div class="abil_detail row">
+                                <img src="./images/atk.png" alt="" />
+                                <p>ATK</p>
+                                <p>0.3</p>
+                            </div>
+                            <div class="abil_detail row">
+                                <img src="./images/atk.png" alt="" />
+                                <p>ATK</p>
+                                <p>0.3</p>
+                            </div>
+                            <div class="abil_detail row">
+                                <img src="./images/atk.png" alt="" />
+                                <p>ATK</p>
+                                <p>0.3</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="abil col">
+                        <h2>Zephr Display</h2>
+                        <div class="row">
+                            <div class="abil_detail row">
+                                <img src="./images/atk.png" alt="" />
+                                <p>ATK</p>
+                                <p>0.3</p>
+                            </div>
+                            <div class="abil_detail row">
+                                <img src="./images/atk.png" alt="" />
+                                <p>ATK</p>
+                                <p>0.3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="social-section">
+                <div class="info_title">Follow Our Project</div>
+                <div class="social-content row">
+                    <a href="https://www.facebook.com/LegendsOfShadawi/"
+                        ><img src="./images/facebook.png" alt="" />
+                    </a>
+                    <a href="https://twitter.com/shadawi_nft"
+                        ><img src="./images/x.png" alt="" />
+                    </a>
+                    <a href="https://www.instagram.com/shadawi_nft/"
+                        ><img src="./images/instagram.png" alt="" />
+                    </a>
+                    <a href="https://discord.gg/nb9GFfPnnW"
+                        ><img src="./images/discord.png" alt="" />
+                    </a>
+                </div>
+                <br />
+            </div>
         </div>
-      </div>
 
-      <div class="controlz" id="ctrl1">
-        <div class="black-container" style="opacity: 0.5">
-          <div
-            class="name"
-            style="justify-content: center"
-            onclick="toggleControls()"
-          >
-            <h3 class="ctrlNm">Controls [x]</h3>
-          </div>
-
-          <div class="button-wrapper">
-            <!-- add Buttons with Javascript -->
-          </div>
-
-          <div class="checkbox-container">
-            <label for="checkbox" style="color: #fff">Loop animation</label>
-            <input type="checkbox" id="checkbox" />
-
-            <label for="checkbox2" style="color: #fff">Show Skeleton</label>
-            <input type="checkbox" id="checkbox2" />
-          </div>
-          <br />
-
-          <div class="slider-container">
-            <p>Ability Speed</p>
-            <input
-              i
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              class="slider"
-              id="myRange"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- IMPORT MAP -->
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://threejs.org/build/three.module.js",
-          "three/addons/": "https://threejs.org/examples/jsm/"
-        }
-      }
-    </script>
-
-    <!-- EDIT DOM -->
-    <script>
-
-      //info div
-      function hideDiv(className = "") {
-        const div = document.getElementsByClassName(className)[0];
-
-        for (let i = 1; i < div.children.length; i++) {
-          const child = div.children[i];
-
-          if (child.style.display == "flex") {
-            child.style.display = "none";
-          } else {
-            child.style.display = "flex";
-          }
-        }
-      }
-
-      //controls div
-      const slider = document.getElementById("myRange");
-      const controlPanel = document.getElementById("ctrl1");
-      const checkbox = document.getElementById("checkbox"); //loop anim
-      const checkbox2 = document.getElementById("checkbox2"); //show skeleton
-
-      var buttons = [];
-      var loopAnim = { status: false, anim: null };
-      var onAbility = function () {
-        console.log("does nothing yet");
-      };
-      var modifyTimeScale = function () {
-        console.log("does nothing yet");
-      };
-
-      function toggleControls() {
-        const allDivs = document.querySelectorAll(".black-container div");
-        allDivs.forEach((div) => {
-          if (div.className !== "name") {
-            if (div.style.display == "none") {
-              div.style.display = "block";
-            } else div.style.display = "none";
-          }
-        });
-      }
-
-      function selected(elem) {
-        const AbilityName = String(elem.innerText);
-
-        //do something with abilty name
-        console.log("action activated: " + AbilityName);
-        onAbility(AbilityName, loopAnim.status);
-      }
-
-      function dSelOthers(className = "") {
-        buttons = document.querySelectorAll(".button-wrapper button");
-        var buttonIndex = className.slice(className.indexOf("-") + 1);
-        buttonIndex = Number(buttonIndex);
-        buttonIndex = buttonIndex - 1;
-
-        if (loopAnim.status) {
-          buttons.forEach((el, index) => {
-            if (buttonIndex != index) {
-              el.style.backgroundColor = "inherit";
-            } else {
-              el.style.backgroundColor = "#69ffffdb";
-              selected(el);
+        <!-- IMPORT MAP -->
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://threejs.org/build/three.module.js",
+                    "three/addons/": "https://threejs.org/examples/jsm/"
+                }
             }
-          });
-        } else selected(buttons[buttonIndex]);
-      }
+        </script>
 
-      function addButton(actionName = "") {
-        buttons = document.querySelectorAll(".button-wrapper button");
-        var buttonNumber = buttons.length + 1;
-        var btnClassName = `btn btn-${buttonNumber}`;
+        <!-- JAVASCRIPT DOM -->
+        <script>
+            var isSidebarOpen = false;
+            isSidebarOpen ? null : toggleSidebar();
 
-        var newButton = document.createElement("button");
-        newButton.className = btnClassName;
-        newButton.innerText = String(actionName);
-        newButton.onclick = function () {
-          dSelOthers(this.className);
-        };
-        document.querySelector(".button-wrapper").appendChild(newButton);
-      }
+            // Function to handle the open and close of toggle.
+            function toggleSidebar() {
+                var sidebar = document.getElementById("mySidebar");
+                // var content = document.getElementById("main-content");
+                var toggleBar = document.getElementById("toggleBarBtn");
+                var isMobile = window.innerWidth <= 600;
 
-      function sliderOnchange(e) {
-        // Do something here when value of slider changes
-        const numb = e.target.value;
-        console.log(numb);
-        modifyTimeScale((numb * 1.8) / 100);
-      }
+                if (isSidebarOpen) {
+                    //close
+                    sidebar.style.height = isMobile ? "0" : "100%";
+                    sidebar.style.width = isMobile ? "100%" : "0";
 
-      slider.onchange = sliderOnchange;
-    </script>
+                    isMobile
+                        ? (toggleBar.style.marginBottom = "0")
+                        : (toggleBar.style.marginLeft = "0");
 
-    <!-- THREE JS -->
-    <script type="module">
-      import * as THREE from "three";
-      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+                    console.log(toggleBar.style);
+                } else {
+                    //open
+                    sidebar.style.height = isMobile ? "40%" : "100%";
+                    sidebar.style.width = isMobile ? "100%" : "38%";
 
-      let scene, renderer, camera, stats;
-      let model, terrain, skeleton, mixer, clock;
-      let numAnimations, animations;
+                    isMobile
+                        ? (toggleBar.style.marginBottom = "40vh")
+                        : (toggleBar.style.marginLeft = "38vw");
+                }
 
-      let abilityTime =
-        document.getElementsByClassName("battle time")[0].innerText;
-      abilityTime = abilityTime.slice(abilityTime.indexOf(":") + 2);
-      abilityTime = Number(abilityTime) || 3;
+                // console.log({isMobile})
+                isSidebarOpen = !isSidebarOpen;
+            }
 
-      const specimenInfo = {
-        //link to your 3D model file
-        prefab: "https://amber-capitalist-muskox-654.mypinata.cloud/ipfs/QmY4NdEG1b7s4srHtsvYAyofkJ4Jnm6DpoQoYUtiunRC4J", //"../testgo7.glb", //"https://gateway.pinata.cloud/ipfs/QmSC2c7FpGVnA9QRz8J96r8qx4DXBjK9FunCnn3pMKyEef", //QmUuTPRK4xCjDvqmvJrZ6EBTvonaTcJYSCxmPTvTh8g2XS",
-        map: "%",
-        //puny //humanoid //large //boss //titan
-        size: "humanoid",
-        cycleTime: "humanoid",
-      };
+            function toggleLoader(toggleOn){
+              const loaderDiv = document.getElementById("loader");
+              if(toggleOn){ //turn on
+                loaderDiv.style.direction = "block"
+              } else loaderDiv.style.display = "none" //turn off
+            }
 
-      const allActions = [];
-      const allAbilityNames = [];
-      const baseActions = {
-        idle: { weight: 1 },
-        faint: { weight: 1 },
-      };
+            function addAbility(){}
 
-      init();
-      function init() {
-        const container = document.getElementById("container");
-        clock = new THREE.Clock();
+            function setLoopAnim(){}
 
-        //scene
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xa0a0a0);
-        scene.fog = new THREE.Fog(0xa0a0a0, 20, 90);
+            function onClickAnim(){}
+        </script>
 
-        //Lighting
-        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x8d8d8d);
-        hemiLight.position.set(0, 20, 0);
-        scene.add(hemiLight);
 
-        const dirLight = new THREE.DirectionalLight(0xffffff);
-        dirLight.position.set(3, 10, 10);
-        dirLight.castShadow = true;
-        dirLight.shadow.camera.top = 2;
-        dirLight.shadow.camera.bottom = -2;
-        dirLight.shadow.camera.left = -2;
-        dirLight.shadow.camera.right = 2;
-        dirLight.shadow.camera.near = 0.1;
-        dirLight.shadow.camera.far = 40;
-        scene.add(dirLight);
+        <!-- JAVASCRIPT THREEJS -->
+        <script type="module">
+            import * as THREE from "three";
+            import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+            import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-        //Load Terrain
-        const loader = new GLTFLoader();
-        const _map = specimenInfo.map;
+            let scene, renderer, camera, stats;
+            let model, terrain, skeleton, mixer, clock;
+            let numAnimations, animations;
 
-        if (_map.includes("%") || _map.length < 8 || !_map) {
-          const mesh = new THREE.Mesh(
-            new THREE.PlaneGeometry(100, 100),
-            new THREE.MeshPhongMaterial({ color: 0xcbcbcb, depthWrite: false })
-          );
-          mesh.rotation.x = -Math.PI / 2;
-          mesh.receiveShadow = true;
-          scene.add(mesh);
-          console.log("no map detected");
-        } else {
-          loader.load(_map, function (gltf) {
-            terrain = gltf.scene;
-            terrain.scale.set(100, 100, 100);
-            terrain.receiveShadow = true;
-            scene.add(terrain);
-          });
-        }
+            const specimenInfo = {
+                //link to your 3D model file
+                prefab: "https://amber-capitalist-muskox-654.mypinata.cloud/ipfs/QmY4NdEG1b7s4srHtsvYAyofkJ4Jnm6DpoQoYUtiunRC4J", //"../testgo7.glb", //"https://gateway.pinata.cloud/ipfs/QmSC2c7FpGVnA9QRz8J96r8qx4DXBjK9FunCnn3pMKyEef", //QmUuTPRK4xCjDvqmvJrZ6EBTvonaTcJYSCxmPTvTh8g2XS",
+                mugshot: "./images/domigra",
+                map: "%",
+                //puny //humanoid //large //boss //titan
+                size: "humanoid",
+                cycleTime: "humanoid",
+            };
 
-        //Load Model
-        loader.load(specimenInfo.prefab, function (gltf) {
-          model = gltf.scene;
-          scene.add(model);
+            const allActions = [];
+            const allAbilityNames = [];
+            const baseActions = {
+                idle: { weight: 1 },
+                faint: { weight: 1 },
+            };
 
-          model.traverse(function (object) {
-            if (object.isMesh) object.castShadow = true;
-          });
+            init();
+            function init() {
+                toggleLoader(true);
+                const container = document.body; //document.getElementById("main-content");
+                clock = new THREE.Clock();
 
-          skeleton = new THREE.SkeletonHelper(model);
-          skeleton.visible = checkbox2.checked;
-          scene.add(skeleton);
+                //scene
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xa0a0a0);
+                scene.fog = new THREE.Fog(0xa0a0a0, 20, 90);
 
-          animations = gltf.animations;
-          mixer = new THREE.AnimationMixer(model);
+                //Lighting
+                const hemiLight = new THREE.HemisphereLight(0xffffff, 0x8d8d8d);
+                hemiLight.position.set(0, 20, 0);
+                scene.add(hemiLight);
 
-          // adding the animations to baseActions
-          numAnimations = animations.length;
-          for (let i = 0; i !== numAnimations; ++i) {
-            let clip = animations[i];
-            const name = clip.name;
+                const dirLight = new THREE.DirectionalLight(0xffffff);
+                dirLight.position.set(3, 10, 10);
+                dirLight.castShadow = true;
+                dirLight.shadow.camera.top = 2;
+                dirLight.shadow.camera.bottom = -2;
+                dirLight.shadow.camera.left = -2;
+                dirLight.shadow.camera.right = 2;
+                dirLight.shadow.camera.near = 0.1;
+                dirLight.shadow.camera.far = 40;
+                scene.add(dirLight);
 
-            if (!baseActions[name]) allAbilityNames.push(name);
+                //Load Terrain
+                const loader = new GLTFLoader();
+                const _map = specimenInfo.map;
 
-            const action = mixer.clipAction(clip);
-            baseActions[name] = { weight: 1 };
-            baseActions[name].action = action;
-            allActions.push(action);
-          }
+                if (_map.includes("%") || _map.length < 8 || !_map) {
+                    const mesh = new THREE.Mesh(
+                        new THREE.PlaneGeometry(100, 100),
+                        new THREE.MeshPhongMaterial({
+                            color: 0xcbcbcb,
+                            depthWrite: false,
+                        })
+                    );
+                    mesh.rotation.x = -Math.PI / 2;
+                    mesh.receiveShadow = true;
+                    scene.add(mesh);
+                    console.log("no map detected");
+                } else {
+                    loader.load(_map, function (gltf) {
+                        terrain = gltf.scene;
+                        terrain.scale.set(100, 100, 100);
+                        terrain.receiveShadow = true;
+                        scene.add(terrain);
+                    });
+                }
 
-          onAbility = pairAnim;
+                //Load Model
+                loader.load(specimenInfo.prefab, function (gltf) {
+                    model = gltf.scene;
+                    scene.add(model);
 
-          createGui();
+                    model.traverse(function (object) {
+                        if (object.isMesh) object.castShadow = true;
+                    });
 
-          animate();
-        });
+                    // skeleton = new THREE.SkeletonHelper(model);
+                    // skeleton.visible = checkbox2.checked;
+                    // scene.add(skeleton);
 
-        //Render
-        renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.shadowMap.enabled = true;
-        container.appendChild(renderer.domElement);
+                    animations = gltf.animations;
+                    mixer = new THREE.AnimationMixer(model);
 
-        //Camera
-        const aspect = window.innerWidth / window.innerHeight;
-        camera = new THREE.PerspectiveCamera( 45, aspect, 1, 100 );
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enablePan = true;
-        controls.enableZoom = true;
-        controls.target.set(0, 1, 0);
-        controls.update();
+                    // adding the animations to baseActions
+                    numAnimations = animations.length;
+                    for (let i = 0; i !== numAnimations; ++i) {
+                        let clip = animations[i];
+                        const name = clip.name;
 
-        //set specimen size
-        const onSize = (_size = "") => {
-          const setSize = (x, y, z, c) => {
-            camera.position.set(x, y, z); //puny: (0) //human: (2,6,10)  //large: (4,10,15) //boss: (6, 4, 25) //titan: (20,5,35)
-            controls.target.set(0, c, 0); //puny: (0) //human: (2) //large: (5) //boss: (10) // titan: (16)
-          };
+                        if (!baseActions[name]) allAbilityNames.push(name);
 
-          if (_size == "titan") {
-            setSize(20, 5, 35, 16);
-          } else if (_size == "boss") {
-            setSize(6, 4, 25, 10);
-          } else if (_size == "large") {
-            setSize(4, 10, 15, 5);
-          } else if (_size == "humanoid") {
-            setSize(2, 6, 10, 2);
-          } else {
-            setSize(2, 2, 6, 0);
-          }
-        };
+                        const action = mixer.clipAction(clip);
+                        baseActions[name] = { weight: 1 };
+                        baseActions[name].action = action;
+                        allActions.push(action);
+                    }
 
-        onSize(specimenInfo.size);
-        controls.update();
+                    // onAbility = pairAnim;
 
-        //Ground to camera
-        function _onCameraChange() {
-          const centerPosition = controls.target.clone();
-          centerPosition.y = 0;
-          const groundPosition = camera.position.clone();
-          groundPosition.y = 0;
-          const d = centerPosition.distanceTo(groundPosition);
+                    createGui();
 
-          const origin = new THREE.Vector2(controls.target.y, 0);
-          const remote = new THREE.Vector2(0, d);
-          const angleRadians = Math.atan2(
-            remote.y - origin.y,
-            remote.x - origin.x
-          );
-          controls.maxPolarAngle = angleRadians;
-        }
+                    animate();
 
-        controls.addEventListener("change", _onCameraChange.bind(this));
-        controls.addEventListener("change", _onCameraChange.bind(this));
+                    toggleLoader(false)
+                });
 
-        //window resize
-        window.onResize = function () {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        };
-      }
+                //Render
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.shadowMap.enabled = true;
+                container.appendChild(renderer.domElement);
 
-      /** create button for every ability that doesnt contain _p||_proj
-       *
-       * --------------------------------------------
-       * here is the only place where we will customise the baseNames and add them to button */
-      function createGui() {
-        const baseNames = ["None", ...Object.keys(baseActions)];
-        const cleanBaseNames = cleanNames(baseNames).clean;
+                //Camera
+                const aspect = window.innerWidth / window.innerHeight;
+                camera = new THREE.PerspectiveCamera(45, aspect, 1, 100);
+                const controls = new OrbitControls(camera, renderer.domElement);
+                controls.enablePan = true;
+                controls.enableZoom = true;
+                controls.target.set(0, 1, 0);
+                controls.update();
 
-        cleanBaseNames.forEach((actionName, index) => {
-          var Name = actionName;
-          addButton(Name);
-        });
-      }
+                //set specimen size
+                const onSize = (_size = "") => {
+                    const setSize = (x, y, z, c) => {
+                        camera.position.set(x, y, z); //puny: (0) //human: (2,6,10)  //large: (4,10,15) //boss: (6, 4, 25) //titan: (20,5,35)
+                        controls.target.set(0, c, 0); //puny: (0) //human: (2) //large: (5) //boss: (10) // titan: (16)
+                    };
 
-      /** returns two arrays with one with raw array, the other with the cleaned version */
-      function cleanNames(namesArray = []) {
-        const raw = namesArray;
-        const clean = raw.map((el, index) => {
-          const name = String(el);
-          if (el.includes("_")) return name.slice(0, name.indexOf("_"));
-          return name;
-        });
+                    if (_size == "titan") {
+                        setSize(20, 5, 35, 16);
+                    } else if (_size == "boss") {
+                        setSize(6, 4, 25, 10);
+                    } else if (_size == "large") {
+                        setSize(4, 10, 15, 5);
+                    } else if (_size == "humanoid") {
+                        setSize(2, 6, 10, 2);
+                    } else {
+                        setSize(2, 2, 6, 0);
+                    }
+                };
 
-        //pairs
-        const pairs = {};
+                onSize(specimenInfo.size);
+                controls.update();
 
-        for (let i = 0; i < clean.length; i++) {
-          const query = clean[i];
-          pairs[query] = raw.filter((el) => {
-            return el.includes(query);
-          });
-        }
+                //Ground to camera
+                function _onCameraChange() {
+                    const centerPosition = controls.target.clone();
+                    centerPosition.y = 0;
+                    const groundPosition = camera.position.clone();
+                    groundPosition.y = 0;
+                    const d = centerPosition.distanceTo(groundPosition);
 
-        // console.log({ raw, clean, pairs })
-        return { raw, clean, pairs };
-      }
+                    const origin = new THREE.Vector2(controls.target.y, 0);
+                    const remote = new THREE.Vector2(0, d);
+                    const angleRadians = Math.atan2(
+                        remote.y - origin.y,
+                        remote.x - origin.x
+                    );
+                    controls.maxPolarAngle = angleRadians;
+                }
 
-      function stopAll() {
-        mixer.stopAllAction();
-        clearInterval(loopAnim.anim);
-      }
+                controls.addEventListener("change", _onCameraChange.bind(this));
+                controls.addEventListener("change", _onCameraChange.bind(this));
 
-      // Play a specific animation.
-      function playAction(actionName) {
-        try {
-          stopAll();
+                //window resize
+                window.onResize = function () {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                };
+            }
 
-          if (String(actionName).toLowerCase() == "none") {
-            console.log("animations stopped");
-          } else if (loopAnim.status) {
-            console.log("using anim loop");
-            const clip = THREE.AnimationClip.findByName(animations, actionName);
-            const action = mixer.clipAction(clip);
-            playActionLoop(action, actionName);
-          } else {
-            const clip = THREE.AnimationClip.findByName(animations, actionName);
-            const action = mixer.clipAction(clip);
-            action.setLoop(THREE.LoopOnce, 1);
-            action.reset();
-            action.play();
-          }
-        } catch (error) {
-          console.log(`action "${actionName}" cannot be played`, error);
-        }
-      }
+            /** create button for every ability that doesnt contain _p||_proj
+             *
+             * --------------------------------------------
+             * here is the only place where we will customise the baseNames and add them to button */
+            function createGui() {
+                const baseNames = ["None", ...Object.keys(baseActions)];
+                const cleanBaseNames = cleanNames(baseNames).clean;
 
-      function playActionLoop(action, actionName) {
-        stopAll();
+                cleanBaseNames.forEach((actionName, index) => {
+                    var Name = actionName;
+                    addAbility(Name);
+                });
+            }
 
-        if (allAbilityNames.includes(actionName)) {
-          console.log("using ability as if battle");
+            /** returns two arrays with one with raw array, the other with the cleaned version */
+            function cleanNames(namesArray = []) {
+                const raw = namesArray;
+                const clean = raw.map((el, index) => {
+                    const name = String(el);
+                    if (el.includes("_"))
+                        return name.slice(0, name.indexOf("_"));
+                    return name;
+                });
 
-          action.setLoop(THREE.LoopOnce);
-          action.reset();
-          action.play();
+                //pairs
+                const pairs = {};
 
-          loopAnim.anim = setInterval(() => {
-            action.setLoop(THREE.LoopOnce);
-            action.reset();
-            action.play();
-            console.log("Ability Time: " + abilityTime);
-          }, abilityTime * 1000);
-        } else {
-          action.setLoop(THREE.LoopRepeat);
-          action.play();
-        }
-      }
+                for (let i = 0; i < clean.length; i++) {
+                    const query = clean[i];
+                    pairs[query] = raw.filter((el) => {
+                        return el.includes(query);
+                    });
+                }
 
-      /** This function is used to pair an animation + projectile if any. It finds 
+                // console.log({ raw, clean, pairs })
+                return { raw, clean, pairs };
+            }
+
+            function stopAll() {
+                mixer.stopAllAction();
+                clearInterval(loopAnim.anim);
+            }
+
+            // Play a specific animation.
+            function playAction(actionName) {
+                try {
+                    stopAll();
+
+                    if (String(actionName).toLowerCase() == "none") {
+                        console.log("animations stopped");
+                    } else if (loopAnim.status) {
+                        console.log("using anim loop");
+                        const clip = THREE.AnimationClip.findByName(
+                            animations,
+                            actionName
+                        );
+                        const action = mixer.clipAction(clip);
+                        playActionLoop(action, actionName);
+                    } else {
+                        const clip = THREE.AnimationClip.findByName(
+                            animations,
+                            actionName
+                        );
+                        const action = mixer.clipAction(clip);
+                        action.setLoop(THREE.LoopOnce, 1);
+                        action.reset();
+                        action.play();
+                    }
+                } catch (error) {
+                    console.log(
+                        `action "${actionName}" cannot be played`,
+                        error
+                    );
+                }
+            }
+
+            function playActionLoop(action, actionName) {
+                stopAll();
+
+                if (allAbilityNames.includes(actionName)) {
+                    console.log("using ability as if battle");
+
+                    action.setLoop(THREE.LoopOnce);
+                    action.reset();
+                    action.play();
+
+                    loopAnim.anim = setInterval(() => {
+                        action.setLoop(THREE.LoopOnce);
+                        action.reset();
+                        action.play();
+                        console.log("Ability Time: " + specimenInfo.cycleTime);
+                    }, specimenInfo.cycleTime * 1000);
+                } else {
+                    action.setLoop(THREE.LoopRepeat);
+                    action.play();
+                }
+            }
+
+            /** This function is used to pair an animation + projectile if any. It finds 
         anim with matching abilityName_ then plays both if they pair. */
-      function pairAnim(actionName) {
-        stopAll();
+            function pairAnim(actionName) {
+                stopAll();
 
-        //see if it has pairs
-        const baseNames = ["None", ...Object.keys(baseActions)];
-        const { pairs } = cleanNames(baseNames);
-        const pairAnimNames = pairs[actionName];
-        const fullName = pairAnimNames[0];
+                //see if it has pairs
+                const baseNames = ["None", ...Object.keys(baseActions)];
+                const { pairs } = cleanNames(baseNames);
+                const pairAnimNames = pairs[actionName];
+                const fullName = pairAnimNames[0];
 
-        //if no pair, play animation normally
-        if (pairAnimNames.length <= 1 || !pairAnimNames)
-          return playAction(fullName);
-        console.log("used pair");
+                //if no pair, play animation normally
+                if (pairAnimNames.length <= 1 || !pairAnimNames)
+                    return playAction(fullName);
+                console.log("used pair");
 
-        // if has pair, play anim and its pair
-        const clips = [];
-        pairAnimNames.forEach((name, indx) => {
-          const c = THREE.AnimationClip.findByName(animations, name);
-          clips.push(c);
-        });
+                // if has pair, play anim and its pair
+                const clips = [];
+                pairAnimNames.forEach((name, indx) => {
+                    const c = THREE.AnimationClip.findByName(animations, name);
+                    clips.push(c);
+                });
 
-        const playMixedAbility = () => {
-          const millisecs = fullName.slice(fullName.indexOf("-") + 1) || 500;
+                const playMixedAbility = () => {
+                    const millisecs =
+                        fullName.slice(fullName.indexOf("-") + 1) || 500;
 
-          const _action = mixer.clipAction(clips[0]);
-          const _action2 = mixer.clipAction(clips[1]);
-          _action.setLoop(THREE.LoopOnce, 1);
-          _action2.setLoop(THREE.LoopOnce, 1);
-          _action.play();
+                    const _action = mixer.clipAction(clips[0]);
+                    const _action2 = mixer.clipAction(clips[1]);
+                    _action.setLoop(THREE.LoopOnce, 1);
+                    _action2.setLoop(THREE.LoopOnce, 1);
+                    _action.play();
 
-          setTimeout(() => {
-            _action2.play();
-          }, millisecs);
-        };
+                    setTimeout(() => {
+                        _action2.play();
+                    }, millisecs);
+                };
 
-        // if loop anims are on
-        if (loopAnim.status) {
-          loopAnim.anim = setInterval(function () {
-            pairAnimNames.forEach((name, indx) => {
-              const _action = mixer.clipAction(clips[indx]);
-              _action.setLoop(THREE.LoopOnce, 1);
-              _action.reset();
-              _action.play();
-            });
-          }, abilityTime * 1000);
-        } else {
-          pairAnimNames.forEach((name, indx) => {
-            const _action = mixer.clipAction(clips[indx]);
-            _action.setLoop(THREE.LoopOnce, 1);
-            _action.reset();
-            _action.play();
-          });
-        }
-      }
+                // if loop anims are on
+                if (loopAnim.status) {
+                    loopAnim.anim = setInterval(function () {
+                        pairAnimNames.forEach((name, indx) => {
+                            const _action = mixer.clipAction(clips[indx]);
+                            _action.setLoop(THREE.LoopOnce, 1);
+                            _action.reset();
+                            _action.play();
+                        });
+                    }, specimenInfo.cycleTime * 1000);
+                } else {
+                    pairAnimNames.forEach((name, indx) => {
+                        const _action = mixer.clipAction(clips[indx]);
+                        _action.setLoop(THREE.LoopOnce, 1);
+                        _action.reset();
+                        _action.play();
+                    });
+                }
+            }
 
-      modifyTimeScale = function (speed) {
-        mixer.timeScale = speed;
-      };
+            // modifyTimeScale = function (speed) {
+            //     mixer.timeScale = speed;
+            // };
 
-      function setSkeleton(on) {
-        if (on) {
-          skeleton.visible = true;
-          scene.add(skeleton);
-        } else {
-          scene.remove(skeleton);
-        }
-      }
+            // checkbox.addEventListener("change", function () {
+            //     loopAnim.status = this.checked;
 
-      checkbox.addEventListener("change", function () {
-        loopAnim.status = this.checked;
+            //     if (loopAnim.anim) {
+            //         clearInterval(loopAnim.anim);
+            //         console.log("ending loop");
+            //     }
+            // });
 
-        if (loopAnim.anim) {
-          clearInterval(loopAnim.anim);
-          console.log("ending loop");
-        }
-      });
 
-      checkbox2.addEventListener("change", function () {
-        //Do something when the checkbox is checked
-        setSkeleton(this.checked);
-      });
+            //runs the scene
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
 
-      //runs the scene
-      function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-
-        // Update the animation mixer, the stats panel, and render this frame
-        const mixerUpdateDelta = clock.getDelta();
-        mixer.update(mixerUpdateDelta);
-      }
-    </script>
-  </body>
+                // Update the animation mixer, the stats panel, and render this frame
+                const mixerUpdateDelta = clock.getDelta();
+                mixer.update(mixerUpdateDelta);
+            }
+        </script>
+    </body>
 </html>
